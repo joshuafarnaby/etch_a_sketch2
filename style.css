@@ -16,6 +16,10 @@ body {
   background-color: #fefefe;
 }
 
+h1 {
+  margin: 20px 0 40px;
+}
+
 /* #main-container {
   border: 1px solid #000;
   height: 500px;
