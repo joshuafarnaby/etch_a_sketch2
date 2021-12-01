@@ -1,5 +1,6 @@
 const mainContainer = document.getElementById('main-container');
-const resetBtn = document.getElementById('reset-button');
+const resetBtn = document.getElementById('reset-btn');
+const rainbowBtn = document.getElementById('rainbow-btn');
 
 
 // declared here so the values can be accessed below
@@ -23,10 +24,16 @@ function createGrid() {
 function addEventListenersToGrid() {
   mainContainer.childNodes.forEach(node => {
     node.addEventListener('mouseover', (e) => {
-      e.target.style.backgroundColor = '#333';
+      changeBackgroundColor(e.target, '#333')
     })
   })
 }
+
+function changeBackgroundColor(target, color) {
+  target.style.backgroundColor = color;
+}
+
+function removeEventListenersFromGrid() {}
 
 function removeChildren(element) {
   while (element.firstChild) {
@@ -39,6 +46,8 @@ resetBtn.addEventListener('click', () => {
   createGrid()
   addEventListenersToGrid()
 })
+
+// rainbowBtn.addEventListener('click', removeEventListenersFromGrid);
 
 
 
