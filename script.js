@@ -1,10 +1,9 @@
 const mainContainer = document.getElementById('main-container');
 
+
+// declared here so the values can be accessed below
 mainContainer.style.height = '500px';
 mainContainer.style.width = '500px';
-mainContainer.style.border = '1px solid #111';
-mainContainer.style.display = 'flex';
-mainContainer.style.flexFlow = 'row wrap';
 
 for (let i = 1; i <= 16; i++) {
   let newDiv = document.createElement('div');

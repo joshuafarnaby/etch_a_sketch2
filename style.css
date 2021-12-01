@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@300&display=swap');
 
 * {
-  /* box-sizing: border-box; */
   margin: 0;
   padding: 0;
 }
@@ -20,17 +19,8 @@ h1 {
   margin: 20px 0 40px;
 }
 
-/* #main-container {
+#main-container {
   border: 1px solid #000;
-  height: 500px;
-  width: 500px;
   display: flex;
-  /* justify-content: center; */
-/* flex-flow: row wrap;
-} */
-
-/* .sketch-item {
-  background-color: #ddd;
-  border: 1px #000 dotted;
-  flex: 1 0 200px;
-} */
+  flex-flow: row wrap;
+}
