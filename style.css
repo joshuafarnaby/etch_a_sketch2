@@ -27,6 +27,12 @@ h1 {
   background-color: #fefefe;
 }
 
+#reset-button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0px 0px 4px 1px #dedede;
+}
+
 #main-container {
   border: 1px solid #000;
   display: flex;
