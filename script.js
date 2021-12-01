@@ -6,41 +6,41 @@ const resetBtn = document.getElementById('reset-button');
 mainContainer.style.height = '500px';
 mainContainer.style.width = '500px';
 
-for (let i = 1; i <= 16; i++) {
-  let newDiv = document.createElement('div');
+createGrid();
+addEventListenersToGrid();
 
+function createGrid() {
+  for (let i = 1; i <= 16; i++) {
+  let newDiv = document.createElement('div');
+  
   newDiv.style.width = `${500 / 4}px`;
   newDiv.style.height = `${500 / 4}px`;
 
   mainContainer.appendChild(newDiv);
+  }
 }
 
-mainContainer.childNodes.forEach(node => {
-  node.addEventListener('mouseover', (e) => {
-    e.target.style.backgroundColor = '#333';
-  })
-})
-
-resetBtn.addEventListener('click', () => {
-  while (mainContainer.firstChild) {
-    mainContainer.removeChild(mainContainer.firstChild)
-  }
-
-  for (let i = 1; i <= 16; i++) {
-    let newDiv = document.createElement('div');
-  
-    newDiv.style.width = `${500 / 4}px`;
-    newDiv.style.height = `${500 / 4}px`;
-  
-    mainContainer.appendChild(newDiv);
-  }
-
+function addEventListenersToGrid() {
   mainContainer.childNodes.forEach(node => {
     node.addEventListener('mouseover', (e) => {
       e.target.style.backgroundColor = '#333';
     })
   })
+}
+
+function removeChildren(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild)
+  }
+}
+
+resetBtn.addEventListener('click', () => {
+  removeChildren(mainContainer)
+  createGrid()
+  addEventListenersToGrid()
 })
+
+
 
 
 
