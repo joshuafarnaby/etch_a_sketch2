@@ -10,15 +10,15 @@ let rainbow = false;
 mainContainer.style.height = '500px';
 mainContainer.style.width = '500px';
 
-createGrid();
+createGrid(4);
 addEventListenersToGrid();
 
-function createGrid() {
-  for (let i = 1; i <= 16; i++) {
+function createGrid(value) {
+  for (let i = 1; i <= (value ** 2); i++) {
   let newDiv = document.createElement('div');
   
-  newDiv.style.width = `${500 / 4}px`;
-  newDiv.style.height = `${500 / 4}px`;
+  newDiv.style.width = `${500 / value}px`;
+  newDiv.style.height = `${500 / value}px`;
 
   mainContainer.appendChild(newDiv);
   }
@@ -64,17 +64,13 @@ gridSlider.addEventListener('mousedown', () => {
   console.log('mousedown');
 })
 
-function displayChange(newValue) {
+function updateGrid(newValue) {
+  while (mainContainer.firstChild) {
+    mainContainer.removeChild(mainContainer.firstChild)
+  }
+
   document.getElementById('output').textContent = `grid size: ${newValue} x ${newValue}`;
+
+  createGrid(newValue);
+  addEventListenersToGrid();
 }
-
-
-
-
-
-
-
-
-
-
-
