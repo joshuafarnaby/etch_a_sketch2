@@ -41,7 +41,6 @@ h1 {
 
 #main-container {
   border: 1px solid #000;
-  /* box-shadow: 1px 1px 3px 4px #ddd; */
   display: flex;
   flex-flow: row wrap;
 }

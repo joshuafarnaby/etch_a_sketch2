@@ -3,26 +3,27 @@ const resetBtn = document.getElementById('reset-btn');
 const rainbowBtn = document.getElementById('rainbow-btn');
 const gridSlider = document.getElementById('grid-size')
 
-let setColor = '#333';
-let rainbow = false;
-
 // declared here so the values can be accessed below
 mainContainer.style.height = '500px';
 mainContainer.style.width = '500px';
+
+let setColor = '#333';
+let rainbow = false;
+
+// this will be set to the current value of the slider on a mousedown event, and will be compared to the new value on a mouseup event. If the values are the same the grid will not be updated. This prevents a new grid from being generated below the box if the user clicks the slider but does not change the value.
+let currentValue = 0;
 
 createGrid(4);
 addEventListenersToGrid();
 
 function createGrid(value) {
-  // if (mainContainer.childNodes) return;
-
   for (let i = 1; i <= (value ** 2); i++) {
-  let newDiv = document.createElement('div');
-  
-  newDiv.style.width = `${500 / value}px`;
-  newDiv.style.height = `${500 / value}px`;
+    let newDiv = document.createElement('div');
+    
+    newDiv.style.width = `${500 / value}px`;
+    newDiv.style.height = `${500 / value}px`;
 
-  mainContainer.appendChild(newDiv);
+    mainContainer.appendChild(newDiv);
   }
 }
 
@@ -37,6 +38,14 @@ function addEventListenersToGrid() {
       }
     })
   })
+}
+
+function updateGrid(newValue) {
+  while (mainContainer.firstChild) {
+    mainContainer.removeChild(mainContainer.firstChild)
+  }
+
+  document.getElementById('output').textContent = `grid size: ${newValue} x ${newValue}`;
 }
 
 function changeBackgroundColor(target, color) {
@@ -62,8 +71,6 @@ function toggleRainbow() {
 resetBtn.addEventListener('click', resetGrid)
 rainbowBtn.addEventListener('click', toggleRainbow);
 
-let currentValue = 0;
-
 gridSlider.addEventListener('mousedown', (e) => {
   currentValue = e.target.value
 })
@@ -74,11 +81,3 @@ gridSlider.addEventListener('mouseup', (e) => {
   createGrid(e.target.value);
   addEventListenersToGrid();
 })
-
-function updateGrid(newValue) {
-  while (mainContainer.firstChild) {
-    mainContainer.removeChild(mainContainer.firstChild)
-  }
-
-  document.getElementById('output').textContent = `grid size: ${newValue} x ${newValue}`;
-}
