@@ -1,6 +1,7 @@
 const mainContainer = document.getElementById('main-container');
 const resetBtn = document.getElementById('reset-btn');
 const rainbowBtn = document.getElementById('rainbow-btn');
+const gridSlider = document.getElementById('grid-size')
 
 let setColor = '#333';
 let rainbow = false;
@@ -58,6 +59,15 @@ function toggleRainbow() {
 
 resetBtn.addEventListener('click', resetGrid)
 rainbowBtn.addEventListener('click', toggleRainbow);
+
+gridSlider.addEventListener('mousedown', () => {
+  console.log('mousedown');
+})
+
+function displayChange(newValue) {
+  document.getElementById('output').textContent = `grid size: ${newValue} x ${newValue}`;
+}
+
 
 
 

@@ -16,8 +16,8 @@
   </div>
   <div id="main-container"></div>
   <div id="grid-slider-container">
-      <input type="range" name="grid-size" id="grid-size" min="4" max="100" value="4">
-      <p>output</p>
+      <input type="range" name="grid-size" id="grid-size" min="4" max="100" value ="4" defaultValue="4" oninput="displayChange(this.value)">
+      <p id="output">grid size: 4 x 4</p>
   </div>
 </body>
 </html>
