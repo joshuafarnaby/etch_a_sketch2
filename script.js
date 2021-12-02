@@ -14,6 +14,8 @@ createGrid(4);
 addEventListenersToGrid();
 
 function createGrid(value) {
+  // if (mainContainer.childNodes) return;
+
   for (let i = 1; i <= (value ** 2); i++) {
   let newDiv = document.createElement('div');
   
@@ -60,8 +62,17 @@ function toggleRainbow() {
 resetBtn.addEventListener('click', resetGrid)
 rainbowBtn.addEventListener('click', toggleRainbow);
 
-gridSlider.addEventListener('mousedown', () => {
-  console.log('mousedown');
+let currentValue = 0;
+
+gridSlider.addEventListener('mousedown', (e) => {
+  currentValue = e.target.value
+})
+
+gridSlider.addEventListener('mouseup', (e) => {
+  if (currentValue == e.target.value) return;
+  
+  createGrid(e.target.value);
+  addEventListenersToGrid();
 })
 
 function updateGrid(newValue) {
@@ -70,7 +81,4 @@ function updateGrid(newValue) {
   }
 
   document.getElementById('output').textContent = `grid size: ${newValue} x ${newValue}`;
-
-  createGrid(newValue);
-  addEventListenersToGrid();
 }
